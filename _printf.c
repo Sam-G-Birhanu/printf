@@ -97,8 +97,10 @@ int _printf(const char *format, ...)
 	write(1, &ch, 1);
 	prt++;
 	}
-	else if (*format == 'd' || *format == 'i') {
+	else if (*format == 'd' || *format == 'i')
+	{
 		int num = va_arg(is_args, int);
+
 		printNumber(num);
 		prt++;
 	}
