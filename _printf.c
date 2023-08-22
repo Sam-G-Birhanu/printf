@@ -7,6 +7,10 @@
 
 void printNumber(int num)
 {
+	char digits[20];
+	int index = 0;
+	int i;
+
 	if (num < 0)
 	{
 		write(1, "-", 1);
@@ -17,16 +21,13 @@ void printNumber(int num)
 		write(1, "0", 1);
 		return;
 	}
-	char digits[20];
-	int index = 0;
-
 	while (num > 0)
 	{
 		digits[index] = (num % 10) + '0';
 		num /= 10;
 		index++;
 	}
-	for (int i = index - 1; i >= 0; i--)
+	for (i = index - 1; i >= 0; i--)
 	{
 		write(1, &digits[i], 1);
 	}
