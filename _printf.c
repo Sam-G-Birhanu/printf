@@ -20,7 +20,8 @@ void printNumber(int num)
 		write(1, "0", 1);
 		return;
 	}
-	char digits[20], int index = 0;
+	char digits[20];
+	int index = 0;
 
 	while (num > 0)
 	{
@@ -40,7 +41,8 @@ void printNumber(int num)
  **/
 int _printf(const char *format, ...)
 {
-	int prt = 0, va_list is_args;
+	int prt = 0;
+	va_list is_args;
 
 	if (format == NULL)
 		return (-1);
@@ -51,7 +53,8 @@ int _printf(const char *format, ...)
 		if (*format != '%')
 		{
 			write(1, format, 1);
-			prt++, format++;
+			prt++;
+			format++;
 		}
 		else
 		{
@@ -66,6 +69,8 @@ int _printf(const char *format, ...)
 				write(1, string, s_length);
 				prt += s_length;
 			}
+			else if (*format == 'c')
+				write(1, format, 1);
 			else if (*format == '%')
 			{
 				write(1, format, 1);
