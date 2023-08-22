@@ -32,13 +32,13 @@ void printNumber(int num)
 		num /= 10;
 		index++;
 	}
-	digits[index] = '\0';
+		digits[index] = '\0';
 
 	for (i = index - 1; i >= 0; i--)
 	{
-		write(1, &digits[i], 1);
+		write(1, &digits[i], 1);		}
 	}
-}
+
 /**
  * _printf - prints arguements passed into it in different formats
  * @format: this is a paremeter representing the format
@@ -66,7 +66,7 @@ int _printf(const char *format, ...)
 		}
 		}
 		else
-			(*format == 's')
+			if (*format == 's')
 			{
 				char *string = va_arg(is_args, char*);
 				int s_length = 0;
@@ -81,15 +81,15 @@ int _printf(const char *format, ...)
 				char ch = va_arg(is_args, int);
 
 				write(1, &ch, 1);
-
+			}
 			else if (*format == '%')
 			{
 				write(1, format, 1);
 				prt++;
 			}
 			format++;
-		}
 	}
+
 	va_end(is_args);
 	return (prt);
 }
