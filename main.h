@@ -6,6 +6,6 @@
 
 int _printf(const char *format, ...);
 void printNumber(int num);
-void init_buffer(char buf_size[]);
+void init_buffer(char buff_size[]);
 
 #endif /* MAIN_H */
