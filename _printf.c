@@ -48,7 +48,8 @@ int _printf(const char *format, ...)
 		if (*format != '%')
 		{
 			write(1, format, 1);
-			prt++, format++;
+			prt++;
+			format++;
 		}
 		else
 		{
@@ -63,6 +64,8 @@ int _printf(const char *format, ...)
 				write(1, string, s_length);
 				prt += s_length;
 			}
+			else if (*format == 'c')
+				write(1, format, 1);
 			else if (*format == '%')
 			{
 				write(1, format, 1);
