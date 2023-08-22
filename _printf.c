@@ -114,4 +114,3 @@ int _printf(const char *format, ...)
 	va_end(is_args);
 	return (prt);
 }
-}
