@@ -1,9 +1,4 @@
 #include "main.h"
-#include <unistd.h>
-#include <stdarg.h>
-
-int _printf(const char *format, ...);
-
 /**
  * printNumber - prints numbers
  * @num: is a paremeter for decimal number
@@ -32,8 +27,6 @@ void printNumber(int num)
 		num /= 10;
 		index++;
 	}
-	digits[index] = '\0';
-
 	for (i = index - 1; i >= 0; i--)
 	{
 		write(1, &digits[i], 1);
@@ -59,14 +52,12 @@ int _printf(const char *format, ...)
 		{
 			write(1, format, 1);
 			prt++;
-		else
-		{	format++;
-			if (*format == '\0')
-				break;
-		}
+			format++;
 		}
 		else
-			(*format == 's')
+		{
+			format++;
+			if (*format == 's')
 			{
 				char *string = va_arg(is_args, char*);
 				int s_length = 0;
@@ -77,11 +68,7 @@ int _printf(const char *format, ...)
 				prt += s_length;
 			}
 			else if (*format == 'c')
-			{
-				char ch = va_arg(is_args, int);
-
-				write(1, &ch, 1);
-
+				write(1, format, 1);
 			else if (*format == '%')
 			{
 				write(1, format, 1);
@@ -93,3 +80,4 @@ int _printf(const char *format, ...)
 	va_end(is_args);
 	return (prt);
 }
+
