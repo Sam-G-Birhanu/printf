@@ -51,10 +51,11 @@ void printNumber(int num)
 int _printf(const char *format, ...)
 {
 	if (format == NULL)
-	return -1;
+	return (-1);
 
 	int prt = 0;
 	va_list is_args;
+
 	va_start(is_args, format);
 
 	while (*format)
@@ -66,11 +67,11 @@ int _printf(const char *format, ...)
 	}
 	else
 	{
-            format++;
+		format++;
 	if (*format == '\0')
 		break;
 
-    	if (*format == 's')
+	if (*format == 's')
 		{
 		char *string = va_arg(is_args, char *);
 		int s_length = 0;
@@ -83,12 +84,14 @@ int _printf(const char *format, ...)
 	else if (*format == 'c')
 		{
 		char ch = va_arg(is_args, int);
+
 		write(1, &ch, 1);
 		prt++;
 		}
 	else if (*format == 'd' || *format == 'i')
 		{
 		int num = va_arg(is_args, int);
+
 		printNumber(num);
 		prt++;
 		}
@@ -101,13 +104,12 @@ int _printf(const char *format, ...)
 	}
 	}
 
-    va_end(is_args);
-	return prt;
+	va_end(is_args);
+	return (prt);
 }
 
-int main()
+int main(void)
 {
 	_printf("Hello, %s! The number is %d. Character: %c\n", "User", 42, 'A');
-	return 0;
+	return (0);
 }
-

@@ -45,12 +45,11 @@ void printNumber(int num)
 	{
 	write(1, &digits[i], 1);
 	}
-
 	if (isNegative)
 	{
-		digits[0] = '8';
-		write(1, &digits[0], 1);
-	}
+	digits[0] = '8';
+	write(1, &digits[0], 1);
+}
 }
 
 /**
