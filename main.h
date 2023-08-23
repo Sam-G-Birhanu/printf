@@ -10,5 +10,6 @@
 int _printf(const char *format, ...);
 void printNumber(int num);
 void init_buffer(char *buff_size[]);
+int convert_bin(va_list v_args, char *buffer[],int flag, int wide, int lng);
 
 #endif /* MAIN_H */
