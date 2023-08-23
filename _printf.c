@@ -89,17 +89,20 @@ int _printf(const char *format, ...)
 			if (*format == 's')
 			{
 				char *string = va_arg(is_args, char*);
+
 				print_string(string, &prt);
 			}
 			else if (*format == 'c')
 			{
 				char *ltr = va_arg(is_args, char*);
+
 				write(1, &ltr, 1);
 				prt++;
 			}
 			else if (*format == 'd' || *format == 'i')
 			{
 				int num = va_arg(is_args, int);
+
 				printNumber(num);
 				prt++;
 			}
