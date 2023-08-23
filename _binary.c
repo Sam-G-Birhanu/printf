@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * convert_bin - prints an unsigned number to binary
@@ -11,7 +12,7 @@
  * Return: Total number of char printed
  */
 
-int convert_bin(va_list v_args, char *buffer[],
+int convert_bin(va_list v_args, char buffer,
 	int flag, int wide, int lng)
 {
 	unsigned int a, b, d, X;
