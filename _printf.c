@@ -1,8 +1,7 @@
 #include "main.h"
-
 /**
- * printNumber - prints numbers
- * @num: is a parameter for decimal number
+ * printNumber - a function that prints decimals
+ * @num: parameter to be printed
  * Return: void
  **/
 
@@ -11,108 +10,107 @@ void printNumber(int num)
 	char digits[20];
 	int index = 0;
 	int i;
-	int isNegative = 0;
 
 	if (num < 0)
 	{
-	write(1, "-", 1);
-
-	if (num == INT_MIN)
-	{
-	num++;
-	isNegative = 1;
-	}
-	else
-	{
-	num = -num;
-	}
+		write(1, "-", 1);
+		num = -num;
 	}
 	if (num == 0)
 	{
-	write(1, "0", 1);
-
-	return;
+		write(1, "0", 1);
+		return;
 	}
 	while (num > 0)
 	{
-	digits[index] = (num % 10) + '0';
-	num /= 10;
-	index++;
+		digits[index] = (num % 10) + '0';
+		num /= 10;
+		index++;
 	}
-	digits[index] = '\0';
-
 	for (i = index - 1; i >= 0; i--)
-	{
-	write(1, &digits[i], 1);
-	}
+		write(1, &digits[i], 1);
+}
+/**
+ * print_string - a function tha prints string
+ * @string: parameter
+ * @prt: parameter
+ * Return: void
+ **/
 
-	if (isNegative)
-	{
-		digits[0] = '8';
-		write(1, &digits[0], 1);
-	}
+void print_string(const char *string, int *prt)
+{
+	int s_length = 0;
+
+	while (string[s_length] != '\0')
+		s_length++;
+	write(1, string, s_length);
+	*prt += s_length;
 }
 
 /**
- * _printf - prints arguments passed into it in different formats
- * @format: this is a parameter representing the format
- * Return: returns int
+ * print - prints
+ * @prt: int pointer
+ * @format: char pointer
+ * Return: return void
  **/
+
+void print(int *prt, const char *format)
+{
+	write(1, format, 1);
+	(*prt)++;
+}
+
+/**
+ * _printf - a function that prints its arguements
+ * @format: a parameter
+ * Return: returns int count of printed characters
+ **/
+
 int _printf(const char *format, ...)
 {
 	int prt = 0;
 	va_list is_args;
 
-	if (format == NULL)
-	return (-1);
-
+	if (!format || (format[0] == '%' && !format[1]))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
 	va_start(is_args, format);
 	while (*format)
 	{
-	if (*format != '%')
-	{
-		write(1, format, 1);
-		prt++;
+		if (*format != '%')
+		{
+			print(&prt, format);
+			format++;
+		}
+		else
+		{
+			format++;
+			if (*format == 's')
+			{
+				char *string = va_arg(is_args, char*);
+				print_string(string, &prt);
+			}
+			else if (*format == 'c')
+			{
+				char *ltr = va_arg(is_args, char*);
+				write(1, &ltr, 1);
+				prt++;
+			}
+			else if (*format == 'd' || *format == 'i')
+			{
+				int num = va_arg(is_args, int);
+				printNumber(num);
+				prt++;
+			}
+			else if (*format == '%')
+			{
+				print(&prt, format);
+			}
+			format++;
+		}
 	}
-	else
-	{
-	format++;
-	if (*format == '\0')
-	break;
-
-	if (*format == 's')
-	{
-		char *string = va_arg(is_args, char*);
-		int s_length = 0;
-
-	while (string[s_length] != '\0')
-		s_length++;
-	write(1, string, s_length);
-	prt += s_length;
-	}
-	else if (*format == 'c')
-	{
-		char ch = va_arg(is_args, int);
-
-	write(1, &ch, 1);
-	prt++;
-	}
-	else if (*format == 'd' || *format == 'i')
-	{
-		int num = va_arg(is_args, int);
-
-		printNumber(num);
-		prt++;
-	}
-	else if (*format == '%')
-	{
-		write(1, format, 1);
-		prt++;
-	}
-	}
-	format++;
-	}
-
 	va_end(is_args);
 	return (prt);
 }
+
