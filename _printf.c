@@ -47,10 +47,6 @@ void printNumber(int num)
 		write(1, &digits[i], 1);
 	}
 
-	if (isNegative)
-	{
-		write(1, "8", 1);
-	}
 }
 
 /**
