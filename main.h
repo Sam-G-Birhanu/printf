@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <limits.h>
 
+#define UNUSED(x)
+
 int _printf(const char *format, ...);
 void printNumber(int num);
 void init_buffer(char *buff_size[]);

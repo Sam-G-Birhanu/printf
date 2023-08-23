@@ -1,5 +1,7 @@
 #include "main.h"
 #include <stdio.h>
+#include <stdarg.h>
+#include <unistd.h>
 
 /**
  * convert_bin - prints an unsigned number to binary
