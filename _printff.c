@@ -3,6 +3,13 @@
 #include <limits.h>
 
 int _printf(const char *format, ...);
+int main(void);
+
+/**
+ * printNumber - Prints an integer to the standard output.
+ * @num: integer to be printed.
+ * Return: void
+ */
 
 void printNumber(int num)
 {
@@ -47,6 +54,12 @@ void printNumber(int num)
 		write(1, "8", 1);
 	}
 }
+
+/**
+ * _printf - prints arguments passed into it in different formats
+ * @format: this is a parameter representing the format
+ * Return: returns int
+ **/
 
 int _printf(const char *format, ...)
 {
@@ -107,6 +120,12 @@ int _printf(const char *format, ...)
 	va_end(is_args);
 	return (prt);
 }
+
+/**
+ * main - tests the _printf
+ *
+ * Return: (0) success
+ */
 
 int main(void)
 {
