@@ -1,7 +1,5 @@
 #include "main.h"
 
-int _printf(const char *format, ...);
-
 /**
  * printNumber - prints numbers
  * @num: is a parameter for decimal number
