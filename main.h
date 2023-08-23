@@ -8,7 +8,6 @@
 #include <limits.h>
 
 int _printf(const char *format, ...);
-int main(void)
 void printNumber(int num);
 void init_buffer(char *buff_size[]);
 
