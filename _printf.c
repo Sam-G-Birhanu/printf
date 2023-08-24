@@ -137,10 +137,10 @@ const char *check_format(const char *format, int *prt, va_list is_args)
 	else if (*format == 'u')
 	{
 		unsigned int num = va_arg(is_args, unsigned int);
-		
+
 		printNumber(num);
 		(*prt)++;
-	}	
+	}
 	else if (*format == '%')
 	{
 		print(prt, format);
