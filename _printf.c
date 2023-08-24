@@ -136,7 +136,6 @@ const char *check_format(const char *format, int *prt, va_list is_args)
 	{
 		print(prt, format);
 	}
-
 	return (format + 1);
 }
 
