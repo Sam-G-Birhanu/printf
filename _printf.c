@@ -76,7 +76,7 @@ int _printf(const char *format, ...)
 	va_start(is_args, format);
 	while (*format)
 	{
-		if (*format == '%' && !_strchr("sdi%c", format[1]))
+		if (*format == '%' && !_strchr("sdi%cu", format[1]))
 		{
 			print(&prt, format);
 			format++;
@@ -134,6 +134,13 @@ const char *check_format(const char *format, int *prt, va_list is_args)
 		printNumber(num);
 		(*prt)++;
 	}
+	else if (*format == 'u')
+	{
+		unsigned int num = va_arg(is_args, unsigned int);
+		
+		printNumber(num);
+		(*prt)++;
+	}	
 	else if (*format == '%')
 	{
 		print(prt, format);
