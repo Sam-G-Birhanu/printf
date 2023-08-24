@@ -66,11 +66,6 @@ void print(int *prt, const char *format)
  * Return: returns int count of printed characters
  **/
 
-/**
- * _printf - A custom printf function
- * @format: The format string
- * Return: The number of characters printed
- **/
 int _printf(const char *format, ...)
 {
 	int prt = 0;
@@ -100,14 +95,14 @@ int _printf(const char *format, ...)
 }
 
 /**
- * check_format - check format specifiers
+ * check_Format - check format specifiers
  * @format: The format string
  * @prt: Pointer to character count
  * @is_args: The variable argument list
  * Return: Pointer to the character after the processed specifier
  **/
 
-const char *check_format(const char *format, int *prt, va_list is_args)
+const char *check_Format(const char *format, int *prt, va_list is_args)
 {
 	if (*format == 's')
 	{
