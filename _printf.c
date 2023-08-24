@@ -106,6 +106,7 @@ int _printf(const char *format, ...)
  * @is_args: The variable argument list
  * Return: Pointer to the character after the processed specifier
  **/
+
 const char *check_format(const char *format, int *prt, va_list is_args)
 {
 	if (*format == 's')
@@ -125,12 +126,14 @@ const char *check_format(const char *format, int *prt, va_list is_args)
 	else if (*format == 'c')
 	{
 		char ltr = (char)va_arg(is_args, int);
+
 		write(1, &ltr, 1);
 		(*prt)++;
 	}
 	else if (*format == 'd' || *format == 'i')
 	{
 		int num = va_arg(is_args, int);
+
 		printNumber(num);
 		(*prt)++;
 	}
