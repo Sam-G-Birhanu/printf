@@ -73,7 +73,7 @@ int _printf(const char *format, ...)
 
 	if (format == NULL || !format || (format[0] == '%' && !format[1]))
 		return (-1);
-if (format[0] == '%' && (format[1] != 's' && format[1] != 'd' && format[1] != 'i' && format[1] != 'c' ) && !format[2])
+if (format[0] == '%' && (format[1] != 's' && format[1] != 'd' && format[1] != 'i' && format[1] != 'c' && format[1] != '%' ) && !format[2])
 		return (-1);
 
 	va_start(is_args, format);
