@@ -66,6 +66,11 @@ void print(int *prt, const char *format)
  * Return: returns int count of printed characters
  **/
 
+/**
+ * _printf - A custom printf function
+ * @format: The format string
+ * Return: The number of characters printed
+ **/
 int _printf(const char *format, ...)
 {
 	int prt = 0;
@@ -75,6 +80,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
+
 	va_start(is_args, format);
 	while (*format)
 	{
@@ -86,42 +92,53 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-			if (*format == 's')
-			{
-				char *string = va_arg(is_args, char*);
-
-				if (string == NULL)
-				{
-					write(1, ("(null)"), 6);
-					prt += 6;
-				}
-				else
-				{
-				print_string(string, &prt);
-				}
-			}
-			else if (*format == 'c')
-			{
-				char ltr = (char)va_arg(is_args, int); /** type casting **/
-
-				write(1, &ltr, 1);
-				prt++;
-			}
-			else if (*format == 'd' || *format == 'i')
-			{
-				int num = va_arg(is_args, int);
-
-				printNumber(num);
-				prt++;
-			}
-			else if (*format == '%')
-			{
-				print(&prt, format);
-			}
-			format++;
+			format = check_format(format, &prt, is_args);
 		}
 	}
 	va_end(is_args);
 	return (prt);
+}
+
+/**
+ * check_format - check format specifiers
+ * @format: The format string
+ * @prt: Pointer to character count
+ * @is_args: The variable argument list
+ * Return: Pointer to the character after the processed specifier
+ **/
+const char *check_format(const char *format, int *prt, va_list is_args)
+{
+	if (*format == 's')
+	{
+		char *string = va_arg(is_args, char*);
+
+		if (string == NULL)
+		{
+			write(1, "(null)", 6);
+			*prt += 6;
+		}
+		else
+		{
+			print_string(string, prt);
+		}
+	}
+	else if (*format == 'c')
+	{
+		char ltr = (char)va_arg(is_args, int);
+		write(1, &ltr, 1);
+		(*prt)++;
+	}
+	else if (*format == 'd' || *format == 'i')
+	{
+		int num = va_arg(is_args, int);
+		printNumber(num);
+		(*prt)++;
+	}
+	else if (*format == '%')
+	{
+		print(prt, format);
+	}
+
+	return (format + 1);
 }
 
