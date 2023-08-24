@@ -92,7 +92,7 @@ int _printf(const char *format, ...)
 
 				if (string == NULL)
 				{
-					write(1, (null),6);
+					write(1, ("(null)"),6);
 					prt += 6;
 				}
 				else
