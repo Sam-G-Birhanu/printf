@@ -70,7 +70,7 @@ int _printf(const char *format, ...)
 {
 	int prt = 0;
 	va_list is_args;
-	
+
 	if (format == NULL || !format || (format[0] == '%' && !format[1]))
 		return (-1);
 	va_start(is_args, format);
@@ -107,6 +107,7 @@ int _printf(const char *format, ...)
 const char *check_format(const char *format, int *prt, va_list is_args)
 {
 	int sum = 0;
+
 	if (*format == 's')
 	{
 		char *string = va_arg(is_args, char*);
@@ -139,6 +140,7 @@ const char *check_format(const char *format, int *prt, va_list is_args)
 	{
 		unsigned int num = va_arg(is_args, unsigned int);
 		sum = printUnsignedNumber(num, sum);
+
 		(*prt) = sum;
 	}
 	else if (*format == '%')
