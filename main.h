@@ -17,5 +17,6 @@ void init_buffer(char *buff_size[]);
 int convert_bin(va_list v_args, char buffer, int flag, int wide, int lng);
 const char *check_format(const char *format, int *prt, va_list is_args);
 char *_strchr(char *s, char c);
+int printUnsignedNumber(unsigned int num, int sum);
 
 #endif /* MAIN_H */
