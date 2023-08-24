@@ -94,7 +94,7 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == 'c')
 			{
-				char *ltr = va_arg(is_args, char*);
+				char ltr = char(va_arg(is_args, char)); /** type casting **/
 
 				write(1, &ltr, 1);
 				prt++;
