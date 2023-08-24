@@ -1,3 +1,4 @@
+#include "main.h"
 int printUnsignedNumber(unsigned int num, int sum)
 {
     char digits[20];
