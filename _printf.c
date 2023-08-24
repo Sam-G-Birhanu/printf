@@ -71,7 +71,7 @@ int _printf(const char *format, ...)
 	int prt = 0;
 	va_list is_args;
 
-	if (!format || (format[0] == '%' && !format[1]))
+	if (format == NULL || !format || (format[0] == '%' && !format[1]))
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
