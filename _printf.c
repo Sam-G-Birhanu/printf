@@ -90,6 +90,10 @@ int _printf(const char *format, ...)
 			{
 				char *string = va_arg(is_args, char*);
 
+				if (string == NULL)
+				{
+					write(1, (null), 6);
+				}
 				print_string(string, &prt);
 			}
 			else if (*format == 'c')
