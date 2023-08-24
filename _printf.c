@@ -70,6 +70,7 @@ int _printf(const char *format, ...)
 {
 	int prt = 0;
 	va_list is_args;
+	int sum = 0;
 
 	if (format == NULL || !format || (format[0] == '%' && !format[1]))
 		return (-1);
