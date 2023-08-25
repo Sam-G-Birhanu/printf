@@ -19,6 +19,6 @@ char *_strchr(char *s, char c);
 int printUnsignedNumber(unsigned int num, int sum);
 int _putchar(char c);
 unsigned int get_binary_length(unsigned int num);
-int _print_binary(va_list args)
+int _print_binary(va_list args);
 
 #endif /* MAIN_H */
