@@ -139,7 +139,7 @@ const char *check_format(const char *format, int *prt, va_list is_args)
 	{
 		int num = va_arg(is_args, int);
 
-		sum = printNumber(num);
+		sum = printNumber(num, sum);
 		(*prt) = sum;
 	}
 	else if (*format == 'u')
