@@ -86,7 +86,7 @@ int _printf(const char *format, ...)
 	va_start(is_args, format);
 	while (*format)
 	{
-		if (*format == '%' && !_strchr("sdi%cu", format[1]))
+		if (*format == '%' && !_strchr("sdib%cu", format[1]))
 		{
 			print(&prt, format);
 			format++;
@@ -155,6 +155,8 @@ const char *check_format(const char *format, int *prt, va_list is_args)
 	}
 	else if (*format == '%')
 		print(prt, format);
+	else if (*format == 'b')
+            *prt += _print_binary(is_args);
 	return (format + 1);
 }
 
