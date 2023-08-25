@@ -11,8 +11,13 @@ int printNumber(int num, int sum)
 	char digits[20];
 	int index = 0;
 	int i;
-
-	if (num < 0)
+	
+	if (num == INT_MIN)
+	{
+		write(1, "-2147483648", 11);
+		sum += 11;
+	}
+	else if (num < 0)
 	{
 		write(1, "-", 1);
 		num = -num;
