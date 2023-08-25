@@ -6,7 +6,7 @@
  * Return: void
  **/
 
-int printNumber(int num,int sum)
+int printNumber(int num, int sum)
 {
 	char digits[20];
 	int index = 0;
@@ -22,7 +22,7 @@ int printNumber(int num,int sum)
 	{
 		write(1, "0", 1);
 		sum++;
-		return sum;
+		return (sum);
 	}
 	while (num > 0)
 	{
@@ -33,7 +33,7 @@ int printNumber(int num,int sum)
 	}
 	for (i = index - 1; i >= 0; i--)
 		write(1, &digits[i], 1);
-	return sum;
+	return (sum);
 }
 /**
  * print_string - a function tha prints string
@@ -145,7 +145,7 @@ const char *check_format(const char *format, int *prt, va_list is_args)
 	else if (*format == 'u')
 	{
 		unsigned int num = va_arg(is_args, unsigned int);
-		
+
 		sum = printUnsignedNumber(num, sum);
 		(*prt) = sum;
 	}

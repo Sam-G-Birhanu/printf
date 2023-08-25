@@ -10,7 +10,7 @@
 #define UNUSED(x)
 
 int _printf(const char *format, ...);
-void printNumber(int num);
+int  printNumber(int num, int sum);
 void print_string(const char *string, int *prt);
 void print(int *prt, const char *format);
 void init_buffer(char *buff_size[]);
