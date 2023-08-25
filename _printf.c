@@ -19,13 +19,13 @@ int printNumber(int num, int sum)
 	}
 	else if (num < 0)
 	{
-		write(1, "-", 1);
+		_putchar('-');
 		num = -num;
 		sum++;
 	}
 	if (num == 0)
 	{
-		write(1, "0", 1);
+		_putchar('0');
 		sum++;
 		return (sum);
 	}
