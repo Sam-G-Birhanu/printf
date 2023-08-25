@@ -100,7 +100,8 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			format = check_format(format, &prt, is_args);
-			return (prt);
+			if (!*format)
+				return (prt);
 		}
 	}
 	va_end(is_args);
@@ -145,7 +146,7 @@ const char *check_format(const char *format, int *prt, va_list is_args)
 		int num = va_arg(is_args, int);
 
 		sum = printNumber(num, sum);
-		(*prt) = sum;
+		(*prt) += sum;
 	}
 	else if (*format == 'u')
 	{
