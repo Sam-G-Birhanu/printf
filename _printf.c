@@ -5,7 +5,7 @@
  * Return: void
  **/
 
-void printNumber(int num)
+int printNumber(int num)
 {
 	char digits[20];
 	int index = 0;
@@ -15,20 +15,24 @@ void printNumber(int num)
 	{
 		write(1, "-", 1);
 		num = -num;
+		sum++;
 	}
 	if (num == 0)
 	{
 		write(1, "0", 1);
-		return;
+		sum++;
+		return sum;
 	}
 	while (num > 0)
 	{
 		digits[index] = (num % 10) + '0';
 		num /= 10;
 		index++;
+		sum++;
 	}
 	for (i = index - 1; i >= 0; i--)
 		write(1, &digits[i], 1);
+	return sum;
 }
 /**
  * print_string - a function tha prints string
@@ -90,6 +94,7 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			format = check_format(format, &prt, is_args);
+			return (prt);
 		}
 	}
 	va_end(is_args);
@@ -133,14 +138,14 @@ const char *check_format(const char *format, int *prt, va_list is_args)
 	{
 		int num = va_arg(is_args, int);
 
-		printNumber(num);
-		(*prt)++;
+		sum = printNumber(num);
+		(*prt) = sum;
 	}
 	else if (*format == 'u')
 	{
 		unsigned int num = va_arg(is_args, unsigned int);
+		
 		sum = printUnsignedNumber(num, sum);
-
 		(*prt) = sum;
 	}
 	else if (*format == '%')
