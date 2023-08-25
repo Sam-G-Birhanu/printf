@@ -2,10 +2,11 @@
 /**
  * printNumber - a function that prints decimals
  * @num: parameter to be printed
+ * @sum: parameter keeping count
  * Return: void
  **/
 
-int printNumber(int num)
+int printNumber(int num,int sum)
 {
 	char digits[20];
 	int index = 0;
