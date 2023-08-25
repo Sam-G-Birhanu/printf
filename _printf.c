@@ -130,9 +130,7 @@ const char *check_format(const char *format, int *prt, va_list is_args)
 			*prt += 6;
 		}
 		else
-		{
 			print_string(string, prt);
-		}
 	}
 	else if (*format == 'c')
 	{
@@ -156,9 +154,7 @@ const char *check_format(const char *format, int *prt, va_list is_args)
 		(*prt) = sum;
 	}
 	else if (*format == '%')
-	{
 		print(prt, format);
-	}
 	return (format + 1);
 }
 
