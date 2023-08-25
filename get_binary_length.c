@@ -7,14 +7,14 @@
  */
 unsigned int get_binary_length(unsigned int num)
 {
-    size_t binaryDigits = 0;
+	size_t binaryDigits = 0;
 
-    while (num != 0)
-    {
-        num /= 2;
-        binaryDigits++;
-    }
-    return (binaryDigits);
+	while (num != 0)
+	{
+		num /= 2;
+		binaryDigits++;
+	}
+	return (binaryDigits);
 }
 
 /**
@@ -24,34 +24,33 @@ unsigned int get_binary_length(unsigned int num)
  */
 int _print_binary(va_list args)
 {
-    unsigned int number, numDigits, digit, j, powTwo;
-    int totalCount;
+	unsigned int number, numDigits, digit, j, powTwo;
+	int totalCount;
 
-    number = va_arg(args, unsigned int);
-    numDigits = get_binary_length(number);
-    powTwo = 1;
-    totalCount = 0;
+	number = va_arg(args, unsigned int);
+	numDigits = get_binary_length(number);
+	powTwo = 1;
+	totalCount = 0;
 
-    if (number != 0)
-    {
-        for (j = 1; j < numDigits; j++)
-            powTwo *= 2;
+	if (number != 0)
+	{
+		for (j = 1; j < numDigits; j++)
+			powTwo *= 2;
+		while (numDigits > 0)
+		{
+			digit = number / powTwo;
+			_putchar(digit + '0');
+			totalCount++;
+			number -= digit * powTwo;
+			powTwo /= 2;
+			numDigits--;
+		}
+	}
+	else
+	{
+		_putchar('0');
+		return (1);
+	}
 
-        while (numDigits > 0)
-        {
-            digit = number / powTwo;
-            _putchar(digit + '0');
-            totalCount++;
-            number -= digit * powTwo;
-            powTwo /= 2;
-            numDigits--;
-        }
-    }
-    else
-    {
-        _putchar('0');
-        return (1);
-    }
-
-    return (totalCount);
+	return (totalCount);
 }
