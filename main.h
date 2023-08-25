@@ -18,5 +18,6 @@ const char *check_format(const char *format, int *prt, va_list is_args);
 char *_strchr(char *s, char c);
 int printUnsignedNumber(unsigned int num, int sum);
 int _putchar(char c);
+unsigned int get_binary_length(unsigned int num);
 
 #endif /* MAIN_H */
